@@ -7,10 +7,17 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { Suspense } from "react";
 import { LoadingApp } from "@/components";
-
-const Layout = dynamic(() => import("@/components/themes"));
+import AdminLayout from "@/layouts/adminLayout";
+import PublicLayout from "@/layouts/publicLayouts";
+import { useRouter } from "next/router";
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+  // Cek apakah halaman berada dalam "/admin"
+  const isAdminPage = router.pathname.startsWith("/admin");
+
+  const Layout = isAdminPage ? AdminLayout : PublicLayout;
   return (
     <Layout>
       <Head>

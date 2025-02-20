@@ -1,29 +1,22 @@
-const Footer = lazy(() => import("./footer"));
-const Header = lazy(() => import("./header"));
-const Sidebar = lazy(() => import("./sidebar"));
-
+import Footer from "@/components/themes/footer";
+import Header from "@/components/themes/header";
+import Sidebar from "@/components/themes/sidebar";
 import {
   addWindowClass,
   calculateWindowSize,
-  getItem,
-  LoadingApp,
   removeWindowClass,
   useWindowSize
-} from "../utils/function";
-import { Suspense, lazy, useEffect } from "react";
-import { withRouter } from "next/router";
-import useThemeStore from "@/store/theme";
-import {
-  useLoadingStore,
-  useScreenSizeStore,
-  useSidebarStore
-} from "@/store/utils";
+} from "@/components/utils/function";
+import { useScreenSizeStore, useSidebarStore } from "@/store/utils";
+import { useEffect } from "react";
 
-const Layout = ({ children }: any) => {
-  const { themes } = useThemeStore();
-
+export default function AdminLayout({
+  children
+}: {
+  children: React.ReactNode;
+}) {
   const { screenSize, setScreenSize } = useScreenSizeStore();
-  const { loading } = useLoadingStore();
+  //   const { loading, setLoading } = useLoadingStore();
   const { menuSidebarCollapsed, toggleSidebar } = useSidebarStore();
 
   const handleToggleMenuSidebar = () => {
@@ -57,26 +50,20 @@ const Layout = ({ children }: any) => {
   }, [menuSidebarCollapsed, screenSize, setScreenSize, windowSize.width]);
 
   return (
-    <div>
-      <div className="app-wrapper">
-        {themes.sidebar && <Sidebar />}
-        <main className="app-main">
-          {themes.header && <Header />}
-          {themes.content && children}
-        </main>
-        {themes.footer && <Footer />}
+    <div className="app-wrapper">
+      <Sidebar />
+      <main className="app-main">
+        <Header />
+        <main>{children}</main>
+      </main>
+      <Footer />
 
-        <div
-          id="sidebar-overlay"
-          className="sidebar-overlay glass-effect"
-          onClick={handleToggleMenuSidebar}
-          onKeyDown={() => {}}
-        />
-      </div>
-
-      {loading.content && <LoadingApp />}
+      <div
+        id="sidebar-overlay"
+        className="sidebar-overlay glass-effect"
+        onClick={handleToggleMenuSidebar}
+        onKeyDown={() => {}}
+      />
     </div>
   );
-};
-
-export default withRouter(Layout);
+}

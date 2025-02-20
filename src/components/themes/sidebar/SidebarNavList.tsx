@@ -23,27 +23,14 @@ const SidebarNavList: React.FC<Props> = (props) => {
   const title = props.data?.title && <p>{props.data.title}</p>;
 
   const [isMenuExtended, setIsMenuExtended] = useState(false);
-  const [isExpandable, setIsExpandable] = useState(false);
 
   const mainMenuRef = useRef<HTMLUListElement>(null);
   const submenuRef = useRef<HTMLUListElement>(null);
 
-  const handleMainMenuAction = () => {
-    if (isExpandable) {
-      toggleMenu();
-      return;
-    }
-  };
-
-  const toggleMenu = () => {
+  const handleMainMenuAction = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
     setIsMenuExtended((prev) => !prev);
   };
-
-  useEffect(() => {
-    setIsExpandable(
-      Boolean(props?.data?.children && props.data.children.length > 0)
-    );
-  }, [props]);
 
   useEffect(() => {
     const menuElement =
@@ -96,7 +83,6 @@ const SidebarNavList: React.FC<Props> = (props) => {
           <Link
             href={props.data?.path || ""}
             className="nav-link"
-            onClick={handleMainMenuAction}
             style={{ cursor: "pointer" }}
           >
             {props.submenu === "active" ? (

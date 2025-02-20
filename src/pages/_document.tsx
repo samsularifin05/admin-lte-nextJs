@@ -1,6 +1,4 @@
-import { LoadingApp } from "@/components";
 import { Html, Head, Main, NextScript } from "next/document";
-import { Suspense } from "react";
 
 export default function Document() {
   return (
@@ -8,10 +6,8 @@ export default function Document() {
       <Head />
       <body className="bg-body-tertiary">
         <div id="app" className="">
-          <Suspense fallback={<LoadingApp />}>
-            <Main />
-            <NextScript />
-          </Suspense>
+          <Main />
+          <NextScript />
         </div>
       </body>
     </Html>

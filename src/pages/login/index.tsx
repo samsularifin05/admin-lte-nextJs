@@ -2,35 +2,13 @@ import { Button, Col, InputField, Row, getItem, setItem } from "@/components";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { withRouter } from "next/router";
-import useThemeStore from "@/store/theme";
-
+import Cookies from "js-cookie";
 const defaultValue = {
   username: "",
   password: ""
 };
 
 const Login = (props: any) => {
-  const { setTheme } = useThemeStore();
-
-  useEffect(() => {
-    if (getItem("userdata").token !== undefined) {
-      props.router.push("/dashboard");
-    }
-    setTheme({
-      header: false,
-      sidebar: false,
-      footer: false,
-      content: true
-    });
-    return () => {
-      setTheme({
-        header: true,
-        sidebar: true,
-        footer: true,
-        content: true
-      });
-    };
-  }, [props.router, setTheme]);
   const {
     handleSubmit,
     register,
@@ -42,12 +20,17 @@ const Login = (props: any) => {
   const [password, setPassword] = useState(true);
 
   const onSubmit = async (data: any) => {
-    props.router.push("/dashboard");
-    setItem("userdata", {
-      userid: "sam",
-      username: "Samsul Arifin",
-      token: 12341212
-    });
+    Cookies.set(
+      "user",
+      JSON.stringify({
+        userid: "sam",
+        username: "Samsul Arifin",
+        token: 12341212
+      }),
+      { expires: 7 }
+    );
+
+    props.router.push("/admin/dashboard");
   };
 
   return (

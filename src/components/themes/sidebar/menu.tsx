@@ -17,7 +17,7 @@ export interface Menu {
 }
 const menu: Array<Menu> = [
   {
-    path: "/dashboard",
+    path: "/admin/dashboard",
     icon: "nav-icon fas fa-tachometer-alt",
     title: "Dashboard"
   },
@@ -27,7 +27,7 @@ const menu: Array<Menu> = [
     title: "Data Master",
     children: [
       {
-        path: "/about",
+        path: "/admin/about",
         title: "Data Users"
       },
       {

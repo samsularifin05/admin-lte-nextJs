@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { removeItem } from "../utils";
 import { withRouter } from "next/router";
 import { useSidebarStore } from "@/store/utils";
+import Cookies from "js-cookie";
 
 const Header = (props: any) => {
   const { toggleSidebar } = useSidebarStore();
@@ -51,8 +52,8 @@ const Header = (props: any) => {
                   type="button"
                   className="dropdown-item"
                   onClick={() => {
+                    Cookies.remove("user");
                     props.router.push("/login");
-                    removeItem("userdata");
                   }}
                 >
                   <i className="nav-icon fas fa-arrow-right-from-bracket"></i>{" "}
