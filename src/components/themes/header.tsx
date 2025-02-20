@@ -1,16 +1,11 @@
 import React, { useState } from "react";
-import { useRecoilState } from "recoil";
-import { removeItem, toggleSidebarMenu } from "../utils";
+import { removeItem } from "../utils";
 import { withRouter } from "next/router";
+import { useSidebarStore } from "@/store/utils";
 
 const Header = (props: any) => {
-  const [valueHideSidebar, setHideSidebar] = useRecoilState(toggleSidebarMenu);
+  const { toggleSidebar } = useSidebarStore();
 
-  const handleToggleMenuSidebar = () => {
-    setHideSidebar({
-      menuSidebarCollapsed: !valueHideSidebar.menuSidebarCollapsed
-    });
-  };
   const [menu, setMenu] = useState(false);
 
   const toggleMenu = () => {
@@ -23,7 +18,7 @@ const Header = (props: any) => {
         <li className="nav-item">
           <span
             className="nav-link"
-            onClick={handleToggleMenuSidebar}
+            onClick={toggleSidebar}
             data-widget="pushmenu"
             aria-label="Menu Hide Bar"
             role="button"

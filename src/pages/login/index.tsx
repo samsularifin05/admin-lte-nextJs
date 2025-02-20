@@ -1,9 +1,8 @@
 import { Button, Col, InputField, Row, getItem, setItem } from "@/components";
-import { themesSetting } from "@/recoil";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useSetRecoilState } from "recoil";
 import { withRouter } from "next/router";
+import useThemeStore from "@/store/theme";
 
 const defaultValue = {
   username: "",
@@ -11,7 +10,8 @@ const defaultValue = {
 };
 
 const Login = (props: any) => {
-  const setTheme = useSetRecoilState(themesSetting);
+  const { setTheme } = useThemeStore();
+
   useEffect(() => {
     if (getItem("userdata").token !== undefined) {
       props.router.push("/dashboard");

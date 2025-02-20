@@ -1,6 +1,6 @@
 {
-  "name": "latihancrud",
-  "version": "0.1.0",
+  "name": "admin-lte-next",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,20 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "^14.2.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-hook-form": "^7.51.0",
-    "react-loading-skeleton": "^3.2.0",
-    "recoil": "^0.7.7"
+    "next": "^15.1.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
+    "react-loading-skeleton": "^3.5.0",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^6.5.1",
-    "@types/node": "18.15.11",
-    "@types/react": "18.0.33",
-    "@types/react-dom": "18.0.11",
-    "eslint": "8.37.0",
-    "eslint-config-next": "13.2.4",
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "@types/node": "^22.13.4",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "eslint": "^9.20.1",
+    "eslint-config-next": "^15.1.7",
     "typescript": "5.0.3"
   }
 }

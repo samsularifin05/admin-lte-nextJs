@@ -1,5 +1,4 @@
-import { useRecoilValue } from "recoil";
-import { isLoading } from ".";
+import { useLoadingStore } from "@/store/utils";
 
 interface props {
   loading?: boolean;
@@ -15,7 +14,8 @@ interface props {
 const Button: React.FC<props> = (props) => {
   const { title, icon, onClick, textLoading, disabled, type, color, block } =
     props;
-  const loading = useRecoilValue(isLoading);
+
+  const { loading } = useLoadingStore();
 
   return (
     <button
