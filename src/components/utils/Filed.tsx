@@ -74,7 +74,7 @@ const InputField = React.forwardRef((props: IFieldTextProps, ref: any) => {
   return (
     <div className="form-group">
       <label htmlFor={props.name}>{props.label}</label>
-      <div className="input-group">
+      <div className="input-group mb-3">
         <input
           {...props.register}
           type={props.type}
@@ -86,15 +86,15 @@ const InputField = React.forwardRef((props: IFieldTextProps, ref: any) => {
           } `}
         />
         {props.formGroup && (
-          <div className="input-group-append">
-            <span
-              style={{ cursor: "pointer" }}
-              onClick={props.btnAction}
-              className="input-group-text"
-            >
-              <span className={props.iconFormGroup} />
-            </span>
-          </div>
+          // <div className="input-group-append">
+          <span
+            style={{ cursor: "pointer" }}
+            onClick={props.btnAction}
+            className="input-group-text"
+          >
+            <span className={props.iconFormGroup} />
+          </span>
+          // </div>
         )}
 
         {props.errors && (

@@ -13,13 +13,13 @@ export const getItem = (nama: string) => {
 
 export const LoadingApp = () => {
   return (
-    <div className="preloader flex-column justify-content-center align-items-center">
+    <div className="d-flex justify-content-center align-items-center vh-100">
       <Image
         className="animation__shake"
         src={Logo}
         alt="AdminLTELogo"
-        height="60"
-        width="60"
+        height={60}
+        width={60}
       />
     </div>
   );
