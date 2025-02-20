@@ -6,8 +6,8 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body className="sidebar-mini">
-        <div id="app" className="sidebar-mini wrapper">
+      <body className="bg-body-tertiary">
+        <div id="app" className="">
           <Suspense fallback={<LoadingApp />}>
             <Main />
             <NextScript />

@@ -38,6 +38,7 @@ const Layout = ({ children, router }: any) => {
     removeWindowClass("sidebar-closed");
     removeWindowClass("sidebar-collapse");
     removeWindowClass("sidebar-open");
+    removeWindowClass("sidebar-expand-lg");
 
     const size = calculateWindowSize(windowSize.width);
     if (screenSize !== size) {
@@ -48,6 +49,7 @@ const Layout = ({ children, router }: any) => {
       addWindowClass("sidebar-collapse");
     } else if (menuSidebarCollapsed && screenSize === "xs") {
       addWindowClass("sidebar-open");
+      addWindowClass("sidebar-expand-lg");
     } else if (!menuSidebarCollapsed && screenSize !== "lg") {
       addWindowClass("sidebar-closed");
       addWindowClass("sidebar-collapse");
@@ -69,19 +71,22 @@ const Layout = ({ children, router }: any) => {
 
   return (
     <Suspense fallback={<LoadingApp />}>
-      <div className="wrapper">
-        {themes.header && <Header />}
+      <div className="app-wrapper">
         {themes.sidebar && <Sidebar />}
-        {themes.content && children}
+        <main className="app-main">
+          {themes.header && <Header />}
+          {themes.content && children}
+        </main>
         {themes.footer && <Footer />}
 
         <div
           id="sidebar-overlay"
-          role="presentation"
+          className="sidebar-overlay glass-effect"
           onClick={handleToggleMenuSidebar}
           onKeyDown={() => {}}
         />
       </div>
+
       {loading.content && <LoadingApp />}
     </Suspense>
   );

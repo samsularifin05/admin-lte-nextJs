@@ -65,8 +65,61 @@ const menu: Array<Menu> = [
         ]
       },
       {
+        path: "",
+        title: "Level 2",
+        icon: "nav-icon fas far fa-circle nav-icon",
+        children: [
+          {
+            path: "/",
+            title: "Sub Level 2"
+          },
+          {
+            path: "/",
+            title: "Sub Level 3"
+          },
+          {
+            path: "/",
+            title: "Sub Level 4"
+          }
+        ]
+      },
+      {
+        path: "",
+        title: "Level 2",
+        icon: "nav-icon fas far fa-circle nav-icon",
+        children: [
+          {
+            path: "/",
+            title: "Sub Level 2"
+          },
+          {
+            path: "/",
+            title: "Sub Level 3"
+          },
+          {
+            path: "/",
+            title: "Sub Level 4"
+          }
+        ]
+      },
+      {
         path: "/",
         title: "Level 3"
+      }
+    ]
+  },
+  {
+    path: "/",
+    icon: "nav-icon fas fa-database",
+    title: "Data",
+    children: [
+      {
+        path: "/data1",
+        title: "Data 1"
+      },
+      {
+        path: "/data2",
+        title: "Data 2"
       }
     ]
   }

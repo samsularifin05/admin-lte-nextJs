@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface props {
   title: string;
@@ -6,7 +6,7 @@ interface props {
   children?: any;
 }
 const Card: React.FC<props> = (props) => (
-  <div className="card">
+  <div className="card mb-4">
     <div className="card-header">
       <h3 className="card-title">{props.title}</h3>
     </div>

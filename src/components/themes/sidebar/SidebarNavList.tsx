@@ -1,8 +1,8 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { Menu } from "./menu";
 import Link from "next/link";
 
-interface props {
+interface Props {
   data?: Menu;
   submenu?: any;
   clicked?: any;
@@ -11,11 +11,12 @@ interface props {
   expand?: any;
   navheader?: any;
 }
-const SidebarNavList: React.FC<props> = (props) => {
+
+const SidebarNavList: React.FC<Props> = (props) => {
   const icon = props.data?.icon && <i className={props.data.icon} />;
   const titlesub = props.data?.title && (
     <p>
-      {props.data.title} <i className="right fas fa-angle-left" />
+      {props.data.title} <i className="nav-arrow fas fa-angle-right" />
     </p>
   );
 
@@ -24,21 +25,56 @@ const SidebarNavList: React.FC<props> = (props) => {
   const [isMenuExtended, setIsMenuExtended] = useState(false);
   const [isExpandable, setIsExpandable] = useState(false);
 
+  const mainMenuRef = useRef<HTMLUListElement>(null);
+  const submenuRef = useRef<HTMLUListElement>(null);
+
   const handleMainMenuAction = () => {
     if (isExpandable) {
       toggleMenu();
       return;
     }
   };
+
   const toggleMenu = () => {
-    setIsMenuExtended(!isMenuExtended);
+    setIsMenuExtended((prev) => !prev);
   };
 
   useEffect(() => {
     setIsExpandable(
-      Boolean(props && props.data?.children && props.data.children.length > 0)
+      Boolean(props?.data?.children && props.data.children.length > 0)
     );
   }, [props]);
+
+  useEffect(() => {
+    const menuElement =
+      props.submenu === "active" ? submenuRef.current : mainMenuRef.current;
+
+    if (!menuElement) return;
+
+    if (isMenuExtended) {
+      menuElement.classList.add("show");
+      menuElement.style.display = "block";
+      menuElement.style.maxHeight = menuElement.scrollHeight + "px";
+      menuElement.style.opacity = "1";
+
+      setTimeout(() => {
+        menuElement.style.maxHeight = "none";
+      }, 300);
+    } else {
+      menuElement.style.maxHeight = menuElement.scrollHeight + "px";
+      menuElement.style.overflow = "hidden";
+
+      requestAnimationFrame(() => {
+        menuElement.style.maxHeight = "0px";
+        menuElement.style.opacity = "0";
+      });
+
+      setTimeout(() => {
+        menuElement.classList.remove("show");
+        menuElement.style.display = "none";
+      }, 300);
+    }
+  }, [isMenuExtended, props.submenu]);
 
   return (
     <>
@@ -71,11 +107,13 @@ const SidebarNavList: React.FC<props> = (props) => {
         ) : null}
 
         {props.data?.children && (
-          <ul className="nav nav-treeview">
-            {props.data.children &&
-              props.data.children.map((submenu: any, i: number) => (
-                <SidebarNavList data={submenu} key={i} submenu="active" />
-              ))}
+          <ul
+            ref={props.submenu === "active" ? submenuRef : mainMenuRef}
+            className="nav nav-treeview"
+          >
+            {props.data.children.map((submenu: any, i: number) => (
+              <SidebarNavList data={submenu} key={i} submenu="active" />
+            ))}
           </ul>
         )}
       </li>

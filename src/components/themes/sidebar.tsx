@@ -5,17 +5,16 @@ import Link from "next/link";
 
 const Sidebar = () => {
   return (
-    <aside className="main-sidebar sidebar-dark-primary elevation-4">
-      <div className="brand-link text-center">
+    <aside
+      className="app-sidebar bg-body-secondary shadow"
+      data-bs-theme="dark"
+    >
+      <div className="sidebar-brand">
         <span className="brand-text font-weight-light text-center">ADMIN</span>
       </div>
-      <div className="sidebar">
+      <div className="sidebar-wrapper">
         <nav className="mt-2">
-          <ul
-            className="nav nav-pills nav-sidebar flex-column"
-            data-widget="treeview"
-            data-accordion="false"
-          >
+          <ul className="nav sidebar-menu flex-column">
             {menu.map((menu, index) => (
               <SidebarNavList data={menu} key={index} />
             ))}
