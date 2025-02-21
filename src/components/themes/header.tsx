@@ -11,6 +11,10 @@ const Header = () => {
   const handleLogout = () => {
     Cookies.remove("user");
     router.push("/login");
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
   };
 
   return (

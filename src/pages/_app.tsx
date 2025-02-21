@@ -6,10 +6,11 @@ import "@/styles/index.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { Suspense } from "react";
-import { LoadingApp } from "@/components";
+import { findMenuByPath, LoadingApp } from "@/components";
 import AdminLayout from "@/layouts/adminLayout";
 import PublicLayout from "@/layouts/publicLayouts";
 import { useRouter } from "next/router";
+import menu from "@/components/themes/sidebar/menu";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -17,11 +18,14 @@ export default function App({ Component, pageProps }: AppProps) {
   const isAdminPage = router.pathname.startsWith("/admin");
 
   const Layout = isAdminPage ? AdminLayout : PublicLayout;
+
+  const activeMenu = findMenuByPath(menu, router.pathname);
+
   return (
     <Layout>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
-        <title>Admin Template</title>
+        <title>{activeMenu?.title} Admin Template</title>
       </Head>
 
       <Suspense fallback={<LoadingApp />}>
