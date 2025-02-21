@@ -11,10 +11,10 @@
   "dependencies": {
     "js-cookie": "^3.0.5",
     "next": "^15.1.7",
+    "overlayscrollbars-react": "^0.5.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
-    "react-loading-skeleton": "^3.5.0",
     "zustand": "^5.0.3"
   },
   "devDependencies": {

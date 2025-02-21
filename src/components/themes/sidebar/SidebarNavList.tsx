@@ -43,7 +43,7 @@ const SidebarNavList: React.FC<Props> = (props) => {
       menuElement.style.display = "block";
       menuElement.style.maxHeight = menuElement.scrollHeight + "px";
       menuElement.style.opacity = "1";
-
+      menuElement.style.overflow = "auto";
       setTimeout(() => {
         menuElement.style.maxHeight = "none";
       }, 300);

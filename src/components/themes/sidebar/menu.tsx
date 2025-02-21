@@ -107,21 +107,6 @@ const menu: Array<Menu> = [
         title: "Level 3"
       }
     ]
-  },
-  {
-    path: "/",
-    icon: "nav-icon fas fa-database",
-    title: "Data",
-    children: [
-      {
-        path: "/data1",
-        title: "Data 1"
-      },
-      {
-        path: "/data2",
-        title: "Data 2"
-      }
-    ]
   }
 ];
 

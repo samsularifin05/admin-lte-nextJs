@@ -29,7 +29,7 @@ export const useLoadingStore = create<{
 }>((set) => ({
   loading: {
     button: false,
-    content: true,
+    content: false,
     tabel: false
   },
   setLoading: (newLoading) =>

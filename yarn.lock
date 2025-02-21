@@ -1748,6 +1748,16 @@
     "type-check" "^0.4.0"
     "word-wrap" "^1.2.5"
 
+"overlayscrollbars-react@^0.5.6":
+  "integrity" "sha512-E5To04bL5brn9GVCZ36SnfGanxa2I2MDkWoa4Cjo5wol7l+diAgi4DBc983V7l2nOk/OLJ6Feg4kySspQEGDBw=="
+  "resolved" "https://registry.npmjs.org/overlayscrollbars-react/-/overlayscrollbars-react-0.5.6.tgz"
+  "version" "0.5.6"
+
+"overlayscrollbars@^2.0.0":
+  "integrity" "sha512-4le6aI4VzimWPnqKXifqdhjEwTQKiWnuYo8bKuAG0VqISy8h165eGodC1LREshn0YrOe4rJ7ctQ2UlvoIFGjiA=="
+  "resolved" "https://registry.npmjs.org/overlayscrollbars/-/overlayscrollbars-2.11.0.tgz"
+  "version" "2.11.0"
+
 "own-keys@^1.0.1":
   "integrity" "sha512-qFOyK5PjiWZd+QQIh+1jhdb9LpxTF0qs7Pm8o5QHYZ0M3vKqSqzsZaEB6oWlxZ+q2sJBMI/Ktgd2N5ZwQoRHfg=="
   "resolved" "https://registry.npmjs.org/own-keys/-/own-keys-1.0.1.tgz"
@@ -1862,11 +1872,6 @@
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
-
-"react-loading-skeleton@^3.5.0":
-  "integrity" "sha512-gxxSyLbrEAdXTKgfbpBEFZCO/P153DnqSCQau2+o6lNy1jgMRr2MmRmOzMmyrwSaSYLRB8g7b0waYPmUjz7IhQ=="
-  "resolved" "https://registry.npmjs.org/react-loading-skeleton/-/react-loading-skeleton-3.5.0.tgz"
-  "version" "3.5.0"
 
 "react@^16.8.0 || ^17 || ^18 || ^19", "react@^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0", "react@^19.0.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0 || ^19.0.0-0", "react@>=16.8.0", "react@>=18.0.0":
   "integrity" "sha512-V8AVnmPIICiWpGfm6GLzCR/W5FXLchHop40W4nXBmdlEceh16rCN8O8LNWm5bh5XUX91fh7KpA+W0TgMKmgTpQ=="
