@@ -14,7 +14,6 @@ import { useRouter } from "next/router";
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
-  // Cek apakah halaman berada dalam "/admin"
   const isAdminPage = router.pathname.startsWith("/admin");
 
   const Layout = isAdminPage ? AdminLayout : PublicLayout;

@@ -6,7 +6,7 @@ interface props {
   submenu?: string;
 }
 const HeaderContent: React.FC<props> = (props) => (
-  <section className="content-header">
+  <section className="app-content-header">
     <div className="container-fluid">
       <div className="row mb-2">
         <div className="col-sm-6">
@@ -14,7 +14,7 @@ const HeaderContent: React.FC<props> = (props) => (
         </div>
         {props?.menu && (
           <div className="col-sm-6">
-            <ol className="breadcrumb float-sm-right">
+            <ol className="breadcrumb float-sm-end">
               <li className="breadcrumb-item">
                 <div>{props?.menu}</div>
               </li>
