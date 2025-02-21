@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import menu from "./sidebar/menu";
 import SidebarNavList from "./sidebar/SidebarNavList";
-import "overlayscrollbars/overlayscrollbars.css";
 import { OverlayScrollbars } from "overlayscrollbars";
+import "overlayscrollbars/overlayscrollbars.css";
 
 const Sidebar: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
