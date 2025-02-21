@@ -1,65 +1,61 @@
 import React, { useState } from "react";
-import { removeItem } from "../utils";
-import { withRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useSidebarStore } from "@/store/utils";
 import Cookies from "js-cookie";
 
-const Header = (props: any) => {
+const Header = () => {
   const { toggleSidebar } = useSidebarStore();
+  const router = useRouter();
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const [menu, setMenu] = useState(false);
-
-  const toggleMenu = () => {
-    setMenu(!menu);
+  const handleLogout = () => {
+    Cookies.remove("user");
+    router.push("/login");
   };
 
   return (
     <nav className="app-header navbar navbar-expand bg-body">
       <div className="container-fluid">
+        {/* Sidebar Toggle Button */}
         <ul className="navbar-nav">
           <li className="nav-item">
-            <span
-              className="nav-link"
+            <button
+              className="nav-link btn btn-link"
               onClick={toggleSidebar}
-              data-widget="pushmenu"
-              aria-label="Menu Hide Bar"
-              role="button"
+              aria-label="Toggle Sidebar"
             >
               <i className="fas fa-bars" />
-            </span>
+            </button>
           </li>
         </ul>
 
+        {/* User Dropdown */}
         <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
-            <div className="nav-item dropdown" onMouseEnter={toggleMenu}>
-              <div className="nav-link dropdown-toggle user-action">
-                <img
-                  src="https://www.tutorialrepublic.com/examples/images/avatar/2.jpg"
-                  className="avatarProfile"
-                  alt="Avatar"
-                />{" "}
-                Sam <b className="caret"></b>
-              </div>
-              <div
-                className={`dropdown-menu ${menu ? "show" : ""}`}
-                onMouseLeave={() => setMenu(false)}
+          <li className="nav-item dropdown">
+            <button
+              className="nav-link dropdown-toggle user-action btn btn-link"
+              onClick={() => setMenuOpen((prev) => !prev)}
+              aria-expanded={menuOpen}
+            >
+              <img
+                src="https://www.tutorialrepublic.com/examples/images/avatar/2.jpg"
+                className="avatarProfile"
+                alt="Avatar"
+              />{" "}
+              Sam <b className="caret"></b>
+            </button>
+            <div className={`dropdown-menu ${menuOpen ? "show" : ""}`}>
+              <button type="button" className="dropdown-item">
+                <i className="fa fa-user"></i> Profile
+              </button>
+              <button
+                type="button"
+                className="dropdown-item"
+                onClick={handleLogout}
               >
-                <button type="button" className="dropdown-item">
-                  <i className="fa fa-user"></i> Profile
-                </button>
-                <button
-                  type="button"
-                  className="dropdown-item"
-                  onClick={() => {
-                    Cookies.remove("user");
-                    props.router.push("/login");
-                  }}
-                >
-                  <i className="nav-icon fas fa-arrow-right-from-bracket"></i>{" "}
-                  Logout
-                </button>
-              </div>
+                <i className="nav-icon fas fa-arrow-right-from-bracket"></i>{" "}
+                Logout
+              </button>
             </div>
           </li>
         </ul>
@@ -68,4 +64,4 @@ const Header = (props: any) => {
   );
 };
 
-export default withRouter(Header);
+export default Header;
