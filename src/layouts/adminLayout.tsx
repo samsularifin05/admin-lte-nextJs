@@ -4,10 +4,15 @@ import Sidebar from "@/components/themes/sidebar";
 import {
   addWindowClass,
   calculateWindowSize,
+  LoadingApp,
   removeWindowClass,
   useWindowSize
 } from "@/components/utils/function";
-import { useScreenSizeStore, useSidebarStore } from "@/store/utils";
+import {
+  useLoadingStore,
+  useScreenSizeStore,
+  useSidebarStore
+} from "@/store/utils";
 import { useEffect } from "react";
 
 export default function AdminLayout({
@@ -16,7 +21,7 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   const { screenSize, setScreenSize } = useScreenSizeStore();
-  //   const { loading, setLoading } = useLoadingStore();
+  const loading = useLoadingStore((state) => state.loading);
   const { menuSidebarCollapsed, toggleSidebar } = useSidebarStore();
 
   const handleToggleMenuSidebar = () => {
@@ -25,9 +30,6 @@ export default function AdminLayout({
 
   const windowSize = useWindowSize();
   useEffect(() => {
-    // if (getItem("userdata").token === undefined) {
-    //   router.push("/login");
-    // }
     removeWindowClass("sidebar-closed");
     removeWindowClass("sidebar-collapse");
     removeWindowClass("sidebar-open");
@@ -47,23 +49,33 @@ export default function AdminLayout({
       addWindowClass("sidebar-closed");
       addWindowClass("sidebar-collapse");
     }
-  }, [menuSidebarCollapsed, screenSize, setScreenSize, windowSize.width]);
+  }, [
+    menuSidebarCollapsed,
+    screenSize,
+    setScreenSize,
+    windowSize.width,
+    loading
+  ]);
 
   return (
-    <div className="app-wrapper">
-      <Sidebar />
-      <main className="app-main">
-        <Header />
-        <main>{children}</main>
-      </main>
-      <Footer />
+    <>
+      {loading.content && <LoadingApp />}
 
-      <div
-        id="sidebar-overlay"
-        className="sidebar-overlay glass-effect"
-        onClick={handleToggleMenuSidebar}
-        onKeyDown={() => {}}
-      />
-    </div>
+      <div className="app-wrapper">
+        <Sidebar />
+        <main className="app-main">
+          <Header />
+          <main>{children}</main>
+        </main>
+        <Footer />
+
+        <div
+          id="sidebar-overlay"
+          className="sidebar-overlay glass-effect"
+          onClick={handleToggleMenuSidebar}
+          onKeyDown={() => {}}
+        />
+      </div>
+    </>
   );
 }

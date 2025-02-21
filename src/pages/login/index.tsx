@@ -1,8 +1,9 @@
 import { Button, Col, InputField, Row, getItem, setItem } from "@/components";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { withRouter } from "next/router";
 import Cookies from "js-cookie";
+import { useLoadingStore } from "@/store/utils";
 const defaultValue = {
   username: "",
   password: ""
@@ -18,8 +19,12 @@ const Login = (props: any) => {
     defaultValues: defaultValue
   });
   const [password, setPassword] = useState(true);
+  const { setLoading } = useLoadingStore();
 
   const onSubmit = async (data: any) => {
+    setLoading({
+      content: true
+    });
     Cookies.set(
       "user",
       JSON.stringify({
@@ -30,7 +35,12 @@ const Login = (props: any) => {
       { expires: 7 }
     );
 
-    props.router.push("/admin/dashboard");
+    setTimeout(() => {
+      props.router.push("/admin/dashboard");
+      setLoading({
+        content: false
+      });
+    }, 1300);
   };
 
   return (

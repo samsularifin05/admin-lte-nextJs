@@ -13,7 +13,10 @@ export const getItem = (nama: string) => {
 
 export const LoadingApp = () => {
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100">
+    <div
+      className="d-flex justify-content-center align-items-center vh-100 position-fixed w-100 top-0 start-0 bg-white"
+      style={{ zIndex: 9999 }}
+    >
       <Image
         className="animation__shake"
         src={Logo}
