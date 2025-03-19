@@ -63,7 +63,10 @@ export default function AdminLayout({
 
       <div className="app-wrapper">
         <Sidebar />
-        <main className="app-main">
+        <main
+          className="app-main"
+          style={{ height: "100vh", overflow: "auto" }}
+        >
           <Header />
           <main>{children}</main>
         </main>
