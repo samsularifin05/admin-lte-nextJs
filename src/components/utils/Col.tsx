@@ -1,6 +1,6 @@
 interface props {
   className?: string;
-  children?: any;
+  children?: React.ReactNode;
   size: string;
 }
 const Col: React.FC<props> = (props) => (

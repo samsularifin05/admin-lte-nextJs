@@ -3,7 +3,7 @@ import React from "react";
 interface props {
   title: string;
   footer?: string;
-  children?: any;
+  children?: React.ReactNode;
 }
 const Card: React.FC<props> = (props) => (
   <div className="card mb-4">

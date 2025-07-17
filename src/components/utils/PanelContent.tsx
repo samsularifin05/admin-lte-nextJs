@@ -5,7 +5,7 @@ interface Props {
   title?: string;
   menu?: string;
   submenu?: string;
-  children?: any;
+  children?: React.ReactNode;
 }
 const PanelContent: React.FC<Props> = function (props) {
   return (

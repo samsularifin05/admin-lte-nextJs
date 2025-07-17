@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <Layout>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
-        <title>{activeMenu?.title} Admin Template</title>
+        <title>{`${activeMenu?.title ?? "App"} Admin Template`}</title>
       </Head>
 
       <Suspense fallback={<LoadingApp />}>
